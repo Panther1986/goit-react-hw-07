@@ -10,24 +10,12 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
-import storage from "redux-persist/lib/storage";
 import contactsReducer from "./contactsSlice";
 import { filtersReducer } from "./filtersSlice";
 
-const persistConfig = {
-  key: "root",
-  storage,
-  blacklist: ["filters"],
-};
-
 const initialState = {
   contacts: {
-    items: [
-      { id: "id-1", name: "Rosie Simpson", number: "459-12-56" },
-      { id: "id-2", name: "Hermione Kline", number: "443-89-12" },
-      { id: "id-3", name: "Eden Clements", number: "645-17-79" },
-      { id: "id-4", name: "Annie Copeland", number: "227-91-26" },
-    ],
+    items: [],
   },
   filters: {
     name: "",
@@ -37,10 +25,9 @@ const rootReducer = combineReducers({
   contacts: contactsReducer,
   filters: filtersReducer,
 });
-const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
-  reducer: persistedReducer,
+  reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
@@ -48,5 +35,3 @@ export const store = configureStore({
       },
     }),
 });
-
-export const persistor = persistStore(store);
