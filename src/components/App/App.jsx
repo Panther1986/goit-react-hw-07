@@ -8,12 +8,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchContacts } from "../../redux/contactsOps";
 
 const App = () => {
-  const dispatch = useDispatch();
-  const { items, loading, error } = useSelector((state) => state.contacts);
+  // const dispatch = useDispatch();
+  // const { items, loading, error } = useSelector((state) => state.contacts);
 
-  useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchContacts());
+  // }, [dispatch]);
 
   return (
     <div className={css.mainContainer}>

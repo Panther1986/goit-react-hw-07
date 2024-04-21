@@ -7,8 +7,12 @@ import css from "./Contact.module.css";
 const Contact = ({ contact }) => {
   const dispatch = useDispatch();
 
-  const handleDelete = () => {
-    dispatch(deleteContact(contact.id));
+  const handleDelete = async () => {
+    try {
+      await dispatch(deleteContact(contact.id));
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <>
