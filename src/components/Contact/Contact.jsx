@@ -8,12 +8,9 @@ const Contact = ({ contact }) => {
   const dispatch = useDispatch();
 
   const handleDelete = async () => {
-    try {
-      await dispatch(deleteContact(contact.id));
-    } catch (error) {
-      console.log(error);
-    }
+    dispatch(deleteContact(contact.id));
   };
+
   return (
     <>
       <div className={css.contactMainConteiner}>
